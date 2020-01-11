@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 810px;
+            margin: 50px auto;
+        }
+
+        .clear:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .fl {
+            float: left;
+        }
+
+        .fr {
+            float: right;
+        }
+
+        input,button {
+            outline: none;
+        }
+        .logo button {
+            background-color: red;
+            color: #fff;
+            border-radius: 10px;
+            padding: 5px 10px;
+            border: none;
+        }
+
+        .cart {
+            width: 810px;
+            height: 414px;
+            background: url("images/shoppingBg.jpg") 0 0 no-repeat;
+            position: relative;
+        }
+
+        .cart ul {
+            position: absolute;
+            right: 0;
+        }
+
+        .cart ul:nth-of-type(1) {
+            top: 120px;
+        }
+        .cart ul:nth-of-type(2) {
+            top: 230px;
+        }
+
+        .cart ul li {
+            float: left;
+            list-style: none;
+            width: 100px;
+        }
+
+        .cart input {
+            width: 40px;
+            height: 18px;
+            text-align: center;
+            border: 1px solid #aaa;
+            border-left: none;
+            border-right: none;
+        }
+
+        .cart ul button {
+            width: 20px;
+            height: 20px;
+        }
+
+        .cart ul li:nth-of-type(2) {
+            width: 130px;
+        }
+
+        .cart ul li:nth-of-type(3) {
+            width: 100px;
+        }
+
+        .cart ul li:nth-of-type(4) {
+            width: 70px;
+            font-size: 12px;
+        }
+
+        .cart a {
+            color: #666;
+            text-decoration: none;
+        }
+        .cart ol {
+            position: absolute;
+            bottom: 60px;
+            right: 10px;
+            list-style: none;
+        }
+        .cart ol li {
+            position: absolute;
+        }
+        .cart ol li:nth-of-type(1){
+            left: -200px;
+            color: red;
+        }
+        .cart ol li:nth-of-type(2){
+            top:10px;
+            left:-50px;
+        }
+        .cart ol button {
+            background-color: red;
+            border: 0;
+            padding: 5px 10px;
+            color: #fff;
+        }
+        .show {
+            border: 1px solid red;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div class="logo clear">
+            <img src="images/dd_logo.jpg" alt="" class="fl">
+            <button class="fr" onclick="closeWin()">关闭</button>
+        </div>
+        <div class="cart">
+            <ul class="clear">
+                <li>￥<span class="price">21.90</span></li>
+                <li><button onclick="minus(this)">-</button><input type="text" value="1" class="amount"><button onclick="add(this)">+</button></li>
+                <li>￥<span class="sumPrice">21.90</span></li>
+                <li><a href="#">移入收藏</a><br>
+                    <a href="#">删除</a></li>
+            </ul>
+            <ul class="clear">
+                <li>￥<span class="price">24.00</span></li>
+                <li><button onclick="minus(this)">-</button><input type="text" value="1" class="amount"><button onclick="add(this)">+</button></li>
+                <li>￥<span class="sumPrice">24.00</span></li>
+                <li><a href="#">移入收藏</a><br>
+                    <a href="#">删除</a></li>
+            </ul>
+            <ol>
+                <li>￥<span id="totalPrice">45.9</span></li>
+                <li><button onclick="charge()">结算</button></li>
+            </ol>
+        </div>
+        <div id="show"></div>
+    </div>
+    
+</body>
+<script>
+    // 关闭窗口
+    function closeWin(){
+        if(confirm("是否关闭购物车窗口？")){
+            window.close();
+        }
+    }
+    // 按-号
+    function minus(obj){
+        var amount=obj.nextElementSibling.value;
+        if(amount==1){
+            alert("不能再减了！");
+        }
+        amount--;
+        obj.nextElementSibling.value=amount;
+        calPrice();
+    }
+
+    // 按+号
+    function add(obj2){
+        var amount=obj2.previousElementSibling.value;
+        amount++;
+        obj2.previousElementSibling.value=amount;
+        calPrice();
+    } 
+
+    // 计算金额
+    function calPrice(){
+       //<li>￥<span class="price">21.90</span></li >
+       //<li>￥<span class="price">24</span></li>
+        var prices=document.getElementsByClassName("price");
+        
+       //<input type="text" value="1" class="amount">
+       //<input type="text" value="1" class="amount">
+        var amounts=document.getElementsByClassName("amount");
+        
+        var sumPrices=document.getElementsByClassName("sumPrice");
+        var total=0;
+       
+        for(var i=0;i<prices.length;i++){
+            //相当于第一个数总和和第二个数总和都计算 但是第二个数量没变
+            var sum=prices[i].innerHTML*amounts[i].value;
+            sum=Math.round(sum*100)/100;
+            total+=sum;
+            sumPrices[i].innerHTML=sum;     
+        }
+        document.getElementById("totalPrice").innerHTML=total;
+    }
+
+    // 结算
+    function charge() {
+        var sumPrices=document.getElementsByClassName("sumPrice");
+        var totalPrice=document.getElementById("totalPrice");
+        var str="您本次购买的商品信息如下：<br>白岩松：白说：￥"+sumPrices[0].innerHTML+"<br/>岛山书店：￥"+sumPrices[1].innerHTML+"<br>商品总计：￥"+totalPrice.innerHTML;
+        document.getElementById("show").innerHTML=str;
+        document.getElementById("show").className="show";
+    } 
+
+
+</script>
+</html>
