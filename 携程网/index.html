@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/swiper-4.1.6.min - 副本.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <!-- swiper轮播区域 -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="images/1.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="images/2.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="images/3.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="images/4.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="images/5.jpg" alt=""></div>
+        </div>
+        <!-- 如果需要分页器 -->
+        <div class="swiper-pagination"></div>
+        
+        <!-- 如果需要导航按钮 -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+        
+        <!-- 如果需要滚动条 -->
+        <div class="swiper-scrollbar"></div>
+    </div>
+
+
+    <!-- 导航区域 -->
+    <ul class="nav">
+        <li><a href="#">酒店<span class="pic p1"></span></a></li>
+        <li><a href="#">海外酒店</a></li>
+        <li><a href="#">团购</a></li>
+        <li><a href="#">特价酒店</a></li>
+        <li><a href="#">民宿&middot;客栈</a></li>
+    </ul>
+    <ul class="nav">
+        <li><a href="#">机票<span class="pic p2"></span></a></li>
+        <li><a href="#">火车票&middot;抢票</a></li>
+        <li><a href="#">特价机票</a></li>
+        <li><a href="#">汽车票&middot;船票</a></li>
+        <li><a href="#">专车&middot;租车</a></li>
+    </ul>
+    <ul class="nav">
+        <li><a href="#">旅游<span class="pic p3"></span></a></li>
+        <li><a href="#">目的地攻略</a></li>
+        <li><a href="#">周边游</a></li>
+        <li><a href="#">邮轮旅行</a></li>
+        <li><a href="#">定制旅行</a></li>
+    </ul>
+    <ul class="nav">
+        <li><a href="#">景点&middot;玩乐</a></li>
+        <li><a href="#">礼品卡</a></li>
+        <li><a href="#">美食林</a></li>
+        <li><a href="#">WIFI&middot;电话卡</a></li>
+        <li><a href="#">购物&middot;信用卡</a></li>
+        <li><a href="#">保险&middot;签证</a></li>
+    </ul>
+    <div class="banner">
+        <img src="images/pic_sale.png" alt="">
+    </div>
+    <div class="tabWrap">
+        <div>
+            <span class="pic2 p4"></span><br />
+            电话预订
+        </div>
+        <div>
+            <span class="pic2 p5"></span><br />
+            下载客户端
+        </div>
+        <div>
+            <span class="pic2 p6"></span><br />
+            我的携程
+        </div>
+    </div>
+</body>
+<script src="js/setRem.js"></script>
+<script src="js/swiper-4.1.6.min.js"></script>
+<script>
+    var mySwiper = new Swiper ('.swiper-container', {
+        autoplay:true,
+    loop: true, // 循环模式选项
+    
+    // 如果需要分页器
+    pagination: {
+      el: '.swiper-pagination',
+    },
+    
+    // 如果需要前进后退按钮
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    
+    // 如果需要滚动条
+    scrollbar: {
+      el: '.swiper-scrollbar',
+    },
+  })    
+</script>
+
+</html>
