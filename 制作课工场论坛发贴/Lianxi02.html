@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+        }
+        li {
+            list-style: none;
+            padding: 20px 0;
+            border-bottom: 1px dashed #ccc;
+        }
+        .fl {
+            float: left;
+        }
+        #box {
+            width: 500px;
+            height: 400px;
+            margin: 0 auto;
+            position: relative;
+            padding: 20px;
+            border: 1px solid #009865;
+            overflow: scroll;
+        }
+        #publish {
+            background-color: #009865;
+            padding: 10px 30px;
+            color: #fff;
+            text-align: center;
+            outline: none;
+            font-size: 16px;
+            border-radius: 5px;
+            
+        }
+        .chat {
+            position: absolute;
+            top:80px;
+            left:80px;
+            width: 400px;
+            border:1px solid #ccc;
+            padding: 10px;
+            background-color: #fff;
+            display: none;
+            box-shadow: 2px 2px 5px 5px #ccc;
+        }
+        .chat p {
+            padding: 10px 0;
+        }
+        .chat input {
+            width: 90%;
+            height: 30px;
+            line-height: 30px;
+            color:#ccc;
+        }
+        
+        li img {
+            width: 50px;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+        #add {
+            background-color: #009865;
+            padding: 10px 30px;
+            text-align: center;
+            outline: none;
+            border:none;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <p><button id="publish" onclick="publish()">我要发帖</button></p>
+        <div class="show">
+            <ul>
+                <li>
+                    <div class="fl"><img src="images/tou01.jpg" alt=""></div>
+                    <h4>这是一个标题</h4>
+                    <p>这里是内容</p>
+                    <p>板块：新手报到&nbsp;&nbsp;发布时间：2019-3-8 14:20:58</p>
+                </li>
+            </ul>
+        </div>
+        <div class="chat">
+            <p><input type="text" placeholder="请输入标题（1-50个字符）" id="title"></p>
+            <p>所属板块：<select id="bk">
+                <option>请选择板块</option>
+                <option>新手报到</option>
+                <option>课程查询</option>
+                <option>无事闲聊</option>
+                <option>天气预报</option>
+            </select></p>
+            <p><textarea cols="40" rows="10" id="content"></textarea></p>
+            <p><button id="add" onclick="add()">发布</button></p>
+        </div>
+    </div>
+</body>
+<script>
+    function publish(){
+        document.getElementsByClassName("chat")[0].style.display="block";
+    }
+    function add(){
+        // 收集数据
+        var title=document.getElementById("title").value;
+        var bk=document.getElementById("bk").value;
+        var content=document.getElementById("content").value;
+
+        // 创建元素
+        var i=parseInt(Math.random()*4+1);
+        console.log(i);
+        var img=document.createElement("img");
+        img.setAttribute("src","images/tou0"+i+".jpg");
+        var div=document.createElement("div");
+        div.className="fl";
+        div.appendChild(img);
+
+        var h4=document.createElement("h4");
+        h4.innerHTML=title;
+        var p1=document.createElement("p");
+        p1.innerHTML=content;
+        var p2=document.createElement("p");
+        var now=new Date();
+        var year=now.getFullYear();
+        var month=now.getMonth()+1;
+        var day=now.getDate();
+        var hh=now.getHours();
+        var mm=now.getMinutes();
+        var ss=now.getSeconds();
+        p2.innerHTML="版块："+bk+"&nbsp;&nbsp;发布时间："+year+"-"+month+"-"+day+"&nbsp;"+hh+":"+mm+":"+ss;
+
+        var li=document.createElement("li");
+        li.appendChild(div);
+        li.appendChild(h4);
+        li.appendChild(p1);
+        li.appendChild(p2);
+        document.getElementsByTagName("ul")[0].appendChild(li);
+
+        document.getElementsByClassName("chat")[0].style.display="none";
+    }
+</script>
+</html>
