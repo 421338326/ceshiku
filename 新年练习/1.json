@@ -1,0 +1,24 @@
+{
+    "data":[
+       { "name":"饼干糕点"},
+       { "name":"休闲零食"},
+       { "name":"饮料果汁"},
+       { "name":"牛奶乳品"},
+       { "name":"冲饮谷物"},
+       { "name":"营养保健"},
+       { "name":"吃货天堂"},
+       { "name":"满49减10"},
+       { "name":"1号酒窖"},
+       { "name":"百威哈啤两件7折"}
+    ],
+    "data2":[
+        {"name":"img/sec1.jpg"},
+       {"name":"img/sec1-1.jpg"},
+       {"name":"img/sec1-2.jpg"},
+       {"name":"img/sec1-3.jpg"},
+       {"name":"img/sec1-4.jpg"},
+       {"name":"img/sec1-5.jpg"},
+       {"name":"img/sec1-6.jpg"}
+     ]
+  
+}
